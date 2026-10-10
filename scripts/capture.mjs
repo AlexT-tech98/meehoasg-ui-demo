@@ -1,5 +1,5 @@
 import { chromium } from 'playwright';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
 
 const root = 'https://alext-tech98.github.io/meehoasg-ui-demo/';
 const pages = [
@@ -9,6 +9,13 @@ const pages = [
   ['flowers', 'nguyen-lieu'], ['admin', 'cai-dat']
 ];
 const widths = [320, 375, 390, 430, 768, 1024, 1440];
+const expectedCss = readFileSync('index.html', 'utf8').match(/meehoa-core\.css\?v=[^\"]+/)?.[0];
+for (let attempt = 0; attempt < 60; attempt++) {
+  const remote = await fetch(`${root}?probe=${Date.now()}`).then(r => r.text()).catch(() => '');
+  if (remote.includes(expectedCss)) break;
+  if (attempt === 59) throw new Error('GitHub Pages has not deployed the expected demo version');
+  await new Promise(resolve => setTimeout(resolve, 10000));
+}
 const browser = await chromium.launch({ headless: true });
 const findings = [];
 mkdirSync('evidence', { recursive: true });
