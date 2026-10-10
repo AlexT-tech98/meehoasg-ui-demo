@@ -5,6 +5,7 @@ on:
     paths:
       - 'staging-pr28/**'
       - 'scripts/check-staging-pr28.mjs'
+      - 'scripts/check-staging-pr28-interactions.mjs'
       - '.github/workflows/staging-pr28.yml'
 jobs:
   smoke:
