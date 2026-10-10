@@ -4,7 +4,7 @@ const base='https://alext-tech98.github.io/meehoasg-ui-demo/staging-pr28/';
 const browser=await chromium.launch({headless:true});
 const checks=[];
 try {
- for(const width of [390,1440]){
+ for(const width of [320,375,390,430,1440]){
   const page=await browser.newPage({viewport:{width,height:850},deviceScaleFactor:1});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base+'?qa-mobile='+Date.now(),{waitUntil:'domcontentloaded',timeout:30000});
@@ -16,6 +16,7 @@ try {
     const search=document.getElementById('globalSearchInput');
     return {
       refreshVisible:!!refresh&&!!refresh.getClientRects().length&&s.display!=='none'&&s.visibility!=='hidden',
+      refreshRight:refresh?.getBoundingClientRect().right||0,
       refreshCount:document.querySelectorAll('.mee-refresh-action').length,
       reloadButton:!!document.querySelector('#meeReloadApp'),
       inputFont:search?parseFloat(getComputedStyle(search).fontSize):0,
@@ -29,7 +30,8 @@ try {
   assert.equal(ui.reloadButton,false,'reload button must be removed');
   assert.equal(ui.refreshCount,1,'one refresh action');
   assert.equal(ui.refreshVisible,true,'refresh action visible');
-  if(width===390)assert.ok(ui.inputFont>=16,'iOS search font is at least 16px');
+  if(width<=430)assert.ok(ui.refreshRight<=width+1,'refresh button must remain inside mobile viewport');
+  if(width<=430)assert.ok(ui.inputFont>=16,'iOS search font is at least 16px');
   assert.ok(ui.dashboardHeading.includes('Một ngày ở Meehoasg'),'approved dashboard heading');
   assert.ok(ui.dashboardLabel.includes('Dashboard Meehoasg'),'approved dashboard label');
   assert.ok(ui.brand.includes('MEEHOASG OPERATIONS'),'approved sidebar tagline');
@@ -54,7 +56,7 @@ try {
     return {width:box.width,height:box.height,natural:img.naturalWidth,cssMax:getComputedStyle(img).maxWidth};
   });
   assert.ok(thumb,'mobile thumbnail source should exist');
-  if(width===390){
+  if(width<=430){
    assert.ok(thumb.width<=57&&thumb.height<=57,'mobile thumbnail must not exceed 56px');
    assert.ok(thumb.natural>=1000,'test image must have a large natural size');
   }
