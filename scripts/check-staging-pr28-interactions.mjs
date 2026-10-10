@@ -62,7 +62,15 @@ try {
   }
   const scroll=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth-innerWidth}));
   assert.ok(scroll.overflow<=2,'orders must not horizontally overflow');
-  checks.push({width,ui,thumb,search:'PASS',errors});
+  await page.evaluate(()=>window.MEEOPS7.go('production'));
+  await page.waitForSelector('.order .status-next',{timeout:12000});
+  const prodBefore=await page.evaluate(()=>window.S.orders.get('DEMO-001')?.status);
+  assert.equal(prodBefore,'Chờ bó','demo production starts waiting');
+  const control=page.locator('.order').filter({hasText:'Khách minh họa A'}).locator('button.status-next');
+  assert.ok(await control.isVisible(),'production status action visible');
+  await control.click();
+  await page.waitForFunction(()=>window.S.orders.get('DEMO-001')?.status==='Đã bó',{timeout:10000});
+  checks.push({width,ui,thumb,search:'PASS',productionStatus:'PASS',errors});
   assert.equal(errors.length,0,'no browser script errors');
   await page.close();
  }
