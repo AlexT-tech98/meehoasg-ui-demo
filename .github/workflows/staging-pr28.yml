@@ -1,0 +1,27 @@
+name: PR28 staging smoke
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'staging-pr28/**'
+      - 'scripts/check-staging-pr28.mjs'
+      - '.github/workflows/staging-pr28.yml'
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/check-staging-pr28.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pr28-staging-evidence
+          path: evidence/staging-pr28/
+          retention-days: 14
