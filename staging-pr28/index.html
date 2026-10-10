@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="vi"><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'"><script src="./demo-api.js"></script>
+<html lang="vi"><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'"><script src="./demo-api.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Meehoasg — PR28 Staging (Read Only)</title>
+<title>Meehoasg Atelier — PR #28 Staging</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1197,7 +1197,7 @@ tbody tr:last-child td { border-bottom: 0; }
   .topbar-search input { font-size: 13px; }
 }
 
-</style><link rel="stylesheet" href="./assets/meehoa-core.css?v=atelier-3"><style>.demo-banner{position:fixed;z-index:99999;top:0;left:0;right:0;background:#204f42;color:white;text-align:center;font:700 11px/1.3 Inter,sans-serif;padding:6px;pointer-events:none}.app,.login{padding-top:25px!important}</style></head><body><div id="stagingBadge" style="position:fixed;right:12px;bottom:84px;z-index:999999;background:#050b17;color:#fff;padding:10px 14px;border-radius:12px;font:600 11px system-ui;box-shadow:0 10px 30px #0003">PR #28 · STAGING / DỮ LIỆU GIẢ · KHÔNG LƯU</div><div class="demo-banner">BẢN DEMO THEO MODULE GỐC · DỮ LIỆU GIẢ · KHÔNG LƯU</div><script>
+</style><link rel="stylesheet" href="./assets/meehoa-core.css?v=atelier28-qa2"></head><body><div id="stagingBadge" style="position:fixed;right:12px;bottom:84px;z-index:999999;background:#050b17;color:#fff;padding:10px 14px;border-radius:12px;font:600 11px system-ui;box-shadow:0 10px 30px #0003">PR #28 · STAGING / DỮ LIỆU GIẢ · KHÔNG LƯU</div><script>
 (function(){
   function earlyFatal(msg){
     if(window.__MEE_EARLY_ERROR__)return;
@@ -1225,7 +1225,7 @@ tbody tr:last-child td { border-bottom: 0; }
       <div class="brand-mark">M</div>
       <div class="brand-copy">
         <b>MEEHOASG</b>
-        <small>OPERATIONS</small>
+        <small>MEEHOASG OPERATIONS</small>
       </div>
     </div>
     <nav id="nav" class="nav"></nav>
@@ -1254,7 +1254,7 @@ tbody tr:last-child td { border-bottom: 0; }
         </div>
       </div>
       <div class="actions">
-        <button class="btn secondary" onclick="MEEOPS7.refreshPage()" title="Làm mới dữ liệu">↻ Làm mới</button>
+        <button class="btn secondary mee-refresh-action" onclick="MEEOPS7.refreshPage()" title="Làm mới dữ liệu">↻ Làm mới</button>
         <button class="btn primary" onclick="MEEOPS7.openOrderForm()">＋ Tạo đơn</button>
         <div class="topbar-user" id="topbarUser" style="display:flex;align-items:center;gap:8px;padding-left:8px;border-left:1px solid var(--border)">
           <div class="user-avatar" id="topbarUserAvatar" style="width:28px;height:28px;font-size:12px">M</div>
@@ -2344,11 +2344,11 @@ function opsTile(o) {
         var topMatches = matches.slice(0, 6);
 
         if (!topMatches.length) {
-            drop.innerHTML = '<div class="search-no-result">Không tìm thấy đơn hàng nào khớp với "<b>' + esc(val) + '</b>"</div>';
+            drop.innerHTML = '<div class="search-no-result">Chưa có trong đơn đang xem. Nhấn <b>Tìm</b> hoặc Enter để tìm tất cả các ngày.</div>';
         } else {
             var header = '<div class="search-dropdown-header">GỢI Ý ĐƠN HÀNG (' + matches.length + ')</div>';
             var items = topMatches.map(function(o) {
-                var thumb = (o.sampleUrls && o.sampleUrls[0]) || o.imageUrl || (o.driveUrls && o.driveUrls[0]);
+                var thumb = firstImage(o, 180) || (o.sampleUrls && o.sampleUrls[0]) || o.imageUrl || (o.driveUrls && o.driveUrls[0]);
                 var thumbHtml = thumb ?
                     '<img class="search-item-thumb" src="' + attr(thumb) + '" onerror="MEEOPS7.imageFallback(this)" alt="Hoa">' :
                     '<div class="search-item-thumb-empty">🌸</div>';
@@ -2475,7 +2475,7 @@ function opsTile(o) {
     var timeBadge = isNear 
       ? '<span class="badge red">≤60p · ' + esc(timeVN(o.time)) + '</span>' 
       : '<span class="badge gold">Quá giờ · ' + esc(timeVN(o.time)) + '</span>';
-    var thumb = (o.sampleUrls && o.sampleUrls[0]) || o.imageUrl || (o.driveUrls && o.driveUrls[0]);
+    var thumb = firstImage(o, 180) || (o.sampleUrls && o.sampleUrls[0]) || o.imageUrl || (o.driveUrls && o.driveUrls[0]);
     var thumbHtml = thumb ?
         '<img class="order-card-mobile-thumb" src="' + attr(thumb) + '" onerror="MEEOPS7.imageFallback(this)" alt="Hoa">' :
         '<div class="order-card-mobile-thumb-empty">🌸</div>';
@@ -2633,7 +2633,7 @@ function opsTile(o) {
   }).join('');
 
   var mobileCards = filteredList.map(function(o) {
-    var thumb = (o.sampleUrls && o.sampleUrls[0]) || o.imageUrl || (o.driveUrls && o.driveUrls[0]);
+    var thumb = firstImage(o, 180) || (o.sampleUrls && o.sampleUrls[0]) || o.imageUrl || (o.driveUrls && o.driveUrls[0]);
     var thumbHtml = thumb ?
         '<img class="order-card-mobile-thumb" src="' + attr(thumb) + '" onerror="MEEOPS7.imageFallback(this)" alt="Hoa">' :
         '<div class="order-card-mobile-thumb-empty">🌸</div>';
@@ -2895,4 +2895,4 @@ function opsTile(o) {
     boot();
 })();
 
-</script><script src="./assets/meehoa-core.js"></script><script>document.addEventListener("submit",function(e){e.preventDefault();e.stopImmediatePropagation();alert("Bản demo không lưu dữ liệu.")},true)</script></body></html>
+</script><script src="./assets/meehoa-core.js?v=atelier28-qa2"></script><script>document.addEventListener("submit",function(e){e.preventDefault();e.stopImmediatePropagation();alert("Bản staging không lưu dữ liệu.");},true)</script></body></html>
