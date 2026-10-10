@@ -455,6 +455,12 @@
     if(!window.S||S.page!=='dashboard')return;
     var r=S.data&&S.data.dashboard,el=qs('#content');if(!r||!el)return;
     buildSummary(r,el);buildReport(r,el);
+    var pageHead=qs('.page-header',el);
+    if(pageHead){
+      var h=qs('h1',pageHead);if(h)h.textContent='Một ngày ở Meehoasg.';
+      var sub=qs('.sub',pageHead);if(sub)sub.textContent='';
+      pageHead.classList.add('mee-atelier-dashboard-header');
+    }
     var oldGrid=qs('.dashboard-grid',el);
     if(oldGrid){
       oldGrid.classList.add('mee-approved-attention');
@@ -464,7 +470,7 @@
         var leftHead=qs('.section-head',left);if(leftHead)leftHead.classList.add('mee-approved-attention-heading');
       }
     }
-    var pageHead=qs('.page-header',el);if(pageHead)pageHead.classList.add('mee-approved-page-header');
+    if(pageHead)pageHead.classList.add('mee-approved-page-header');
     if(hourlyState.dashboardRef!==r){hourlyState.dashboardRef=r;loadHourly(el,true)}else renderHourly(el);
   }
 
@@ -885,15 +891,7 @@
     var b=document.createElement('button');b.type='button';b.className='btn danger full mee-delete-order';b.textContent='Xóa đơn';b.addEventListener('click',function(){requestDelete(id,b)});actions.appendChild(b);
   }
 
-  function installReload(){
-    if(qs('#meeReloadApp'))return;
-    var host=qs('.side-user')||qs('.sidebar');if(!host)return;
-    var b=document.createElement('button');b.id='meeReloadApp';b.type='button';b.className='btn secondary full mee-reload-app-v365';b.textContent='↻ Tải lại ứng dụng';
-    b.onclick=function(){try{Object.keys(localStorage).filter(function(k){return k.indexOf('meehoa-shell-')===0}).forEach(function(k){localStorage.removeItem(k)})}catch(_){ }location.reload()};
-    host.insertBefore(b,host.firstChild);
-  }
-
-  function patch(){patchBodyPage();patchCreateButtons();patchOrderForm();patchCopyActions();patchDelete();installReload()}
+  function patch(){patchBodyPage();patchCreateButtons();patchOrderForm();patchCopyActions();patchDelete()}
   function wrapOpenForm(){
     if(!window.MEEOPS7||!MEEOPS7.openOrderForm||MEEOPS7.openOrderForm._mee365)return;
     var orig=MEEOPS7.openOrderForm;
