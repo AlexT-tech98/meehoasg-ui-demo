@@ -609,12 +609,10 @@ body:not(.mee-search-page) .topbar-left{max-width:none!important}
 .login-card .mee-brand-mark img{object-fit:cover!important}
 .mee-shipping-icon{display:inline-grid!important;place-items:center!important;width:22px!important;height:22px!important;margin-right:5px!important;border-radius:7px!important;background:#f2f8f5!important;font-size:13px!important;vertical-align:middle!important}
 
-body.mee-page-production #content{position:relative!important;isolation:isolate!important;border-radius:28px!important;padding-top:22px!important;background:radial-gradient(circle at 7% 4%,rgba(255,216,111,.30),transparent 18rem),radial-gradient(circle at 96% 8%,rgba(245,139,156,.22),transparent 19rem),radial-gradient(circle at 93% 94%,rgba(143,197,223,.20),transparent 20rem),radial-gradient(circle at 6% 90%,rgba(191,231,211,.34),transparent 20rem),linear-gradient(145deg,rgba(255,250,243,.94),rgba(255,245,248,.88) 48%,rgba(241,250,246,.94))!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.74)!important}
-body.mee-page-production #content:before,body.mee-page-production #content:after{position:absolute!important;z-index:-1!important;pointer-events:none!important;color:rgba(255,255,255,.72)!important;line-height:1!important;filter:drop-shadow(0 12px 20px rgba(80,55,45,.05))!important}
-body.mee-page-production #content:before{content:"✿  ❀"!important;font-size:86px!important;right:12px!important;top:60px!important;transform:rotate(12deg)!important}
-body.mee-page-production #content:after{content:"❀  ✿"!important;font-size:72px!important;left:8px!important;bottom:18px!important;transform:rotate(-13deg)!important}
-body.mee-page-production .lane,body.mee-page-production .order,body.mee-page-production .ops-tile{background:rgba(255,255,255,.94)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-color:rgba(86,63,55,.07)!important;box-shadow:0 10px 28px rgba(74,50,42,.07)!important}
-body.mee-page-production .lane-title{background:linear-gradient(90deg,#eff9f4,#fff4f6 58%,#fff8dc)!important;border-radius:14px!important;padding:10px 12px!important}
+body.mee-page-production #content{position:relative!important;isolation:isolate!important;border-radius:0!important;padding-top:22px!important;background:transparent!important;box-shadow:none!important}
+body.mee-page-production #content:before,body.mee-page-production #content:after{display:none!important}
+body.mee-page-production .lane,body.mee-page-production .order,body.mee-page-production .ops-tile{background:#fffefb!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-color:#d9ded6!important;box-shadow:none!important}
+body.mee-page-production .lane-title{background:#e9eee8!important;border-radius:5px!important;padding:10px 12px!important}
 body.mee-page-production .ops-grid{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(360px,1fr))!important;gap:16px!important;align-items:stretch!important}
 body.mee-page-production .ops-tile{grid-template-columns:84px minmax(0,1fr)!important;gap:13px!important;align-items:start!important;min-width:0!important;height:100%!important}
 body.mee-page-production .ops-tile>div:last-child{min-width:0!important;display:flex!important;flex-direction:column!important;gap:4px!important}
@@ -636,18 +634,18 @@ body.mee-page-production .ops-tile .actions{margin-top:auto!important;padding-to
 .calendar-selection{align-items:center!important}
 .calendar-selection>span{font-weight:800!important;color:#9b8b83!important}
 
-.mee-materials-hero{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin:14px 0 18px;padding:18px;border-radius:20px;background:linear-gradient(135deg,#eff9f5,#fff 52%,#fff2f5);border:1px solid rgba(21,94,71,.08)}
+.mee-materials-hero{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin:14px 0 18px;padding:18px;border-radius:8px;background:#e5eee8;border:1px solid #c9d9cf}
 .mee-materials-hero h3{margin:0 0 4px;font-size:18px}
 .mee-materials-summary{display:flex;gap:8px;flex-wrap:wrap}
 .mee-summary-chip{border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700;background:#fff;border:1px solid #e6ebe8}
 .mee-summary-chip.review{background:#fff1f2;color:#b52f4d;border-color:#ffd0d8}
 .mee-materials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:20px}
-.mee-material-card{appearance:none;text-align:left;border:1px solid #e6ebe8;border-radius:18px;background:#fff;padding:16px;min-height:118px;box-shadow:0 8px 22px rgba(30,55,45,.05);transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;cursor:pointer}
-.mee-material-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(30,55,45,.09);border-color:#a9d8c5}
+.mee-material-card{appearance:none;text-align:left;border:1px solid #d9ded6;border-left:3px solid #65906c;border-radius:7px;background:#fffefb;padding:16px;min-height:118px;box-shadow:none;transition:background-color .16s ease,border-color .16s ease;cursor:pointer}
+.mee-material-card:hover{background:#f2f6f0;border-color:#a9c8b5}
 .mee-material-card:focus-visible{outline:3px solid rgba(21,94,71,.18);outline-offset:2px}
 .mee-material-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-.mee-material-name{font-size:16px;font-weight:800;line-height:1.3;color:#183329}
-.mee-material-count{display:inline-flex;align-items:center;justify-content:center;min-width:54px;padding:5px 9px;border-radius:999px;background:#eaf8f1;color:#166e50;border:1px solid #bee8d4;font-size:12px;font-weight:800}
+.mee-material-name{font-family:Georgia,"Iowan Old Style",serif;font-size:20px;font-weight:600;line-height:1.3;color:#183329}
+.mee-material-count{display:inline-flex;align-items:center;justify-content:center;min-width:54px;padding:5px 9px;border-radius:4px;background:#e8f1e9;color:#28684f;border:1px solid #cddfce;font-size:12px;font-weight:800}
 .mee-material-hint{margin-top:18px;font-size:12px;color:#7f8d86}.mee-material-hint:after{content:' →';font-weight:800;color:#3d745f}
 .mee-review-panel{margin-top:18px;padding:17px;border-radius:20px;background:linear-gradient(135deg,#fff4f4,#fff9ed);border:1px solid #ffd3d7}
 .mee-review-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px}
@@ -1034,6 +1032,8 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .sidebar .brand-mark{flex:0 0 35px!important;width:35px!important;height:35px!important;border-radius:7px!important;overflow:hidden!important;background:#eaf0e7!important}
 .sidebar .brand-mark img{width:100%!important;height:100%!important;object-fit:contain!important}
 .sidebar .nav{gap:2px!important}
+.sidebar .mee-nav-group-title{padding:18px 12px 7px!important;color:#91b6a5!important;font-size:9px!important;letter-spacing:.17em!important;font-weight:850!important}
+.sidebar .mee-nav-group-title:first-child{padding-top:8px!important}
 .sidebar .nav button{color:#c5d7cf!important;background:transparent!important;border-radius:5px!important;font-weight:600!important;box-shadow:none!important;transition:background-color .13s ease,color .13s ease!important}
 .sidebar .nav button:hover{background:#245349!important;color:#fff!important}
 .sidebar .nav button.active{background:#eaf0e7!important;color:#153e37!important;border-left:3px solid #ac724c!important;box-shadow:none!important;font-weight:800!important}
@@ -1064,6 +1064,11 @@ label{font-size:10px!important;letter-spacing:.09em!important;font-weight:800!im
 .badge.info,.badge.status-packed{background:#eaf1f2!important;color:#446b79!important;border-color:#cedfe1!important}
 .badge.status-delivered{background:#e8f1e9!important;color:#2c7458!important;border-color:#cddfce!important}
 .notice{border-radius:6px!important;background:#eef2ea!important;color:#315449!important;border-color:#d4e1d6!important}
+.date-filter-btn{background:#fffefb!important;border:1px solid #cbd6ce!important;color:#23483d!important;padding:0 13px!important}
+.calendar-modal{background:#fffefb!important}
+.calendar-day{background:#f3f5f0!important;border-radius:4px!important}
+.calendar-day.selected{background:#153e37!important;color:#fff!important}
+.calendar-day.in-range{background:#e1ece2!important}
 .search-dropdown,.calendar-modal,.modal,.drawer{background:#fffefb!important;border:1px solid #d9ded6!important;box-shadow:0 24px 70px rgba(16,46,38,.17)!important}
 .modal,.calendar-modal{border-radius:12px!important}
 .drawer{border-radius:0!important}
@@ -1111,16 +1116,33 @@ label{font-size:10px!important;letter-spacing:.09em!important;font-weight:800!im
 .settlement-card{border-left:3px solid #946b2f!important}
 .settle-check{accent-color:#153e37!important}
 .pending-banner,.rejected-banner{border-radius:5px!important}
+body.mee-page-payment #content>.section-head{padding:16px 18px!important;background:#f6efdf!important;border:1px solid #dfd2b6!important;border-radius:8px!important;margin-bottom:14px!important}
+body.mee-page-payment #content>.section-head h3{color:#6b5028!important}
+body.mee-page-payment .settlement-card .money{font-family:var(--mee-display)!important;font-size:24px!important;color:#6b5028!important}
+body.mee-page-debt #content>.stats{gap:0!important;background:#fffefb!important;border:1px solid #d9ded6!important;border-radius:8px!important;overflow:hidden!important}
+body.mee-page-debt #content>.stats>.stat{border:0!important;border-radius:0!important;box-shadow:none!important;border-right:1px solid #d9ded6!important;background:transparent!important}
+body.mee-page-debt #content>.stats>.stat:last-child{border-right:0!important}
+body.mee-page-debt #content>.stats>.stat:first-child{background:#f8ebe8!important}
+body.mee-page-orders .status-filter-tabs{padding:8px 0 14px!important;border-bottom:1px solid #d9ded6!important}
+body.mee-page-orders .sheet-table .note-cell{min-width:175px!important}
+body.mee-page-orders .sheet-table tbody tr{cursor:pointer}
 
 /* Reports and materials are presented as ledgers, not repeated dashboard cards. */
 .sales-kpi-grid{gap:12px!important}
+body.mee-page-kpi #content>.stats{gap:0!important;background:#fffefb!important;border:1px solid #d9ded6!important;border-radius:8px!important;overflow:hidden!important}
+body.mee-page-kpi #content>.stats>.stat{border:0!important;border-radius:0!important;border-right:1px solid #d9ded6!important;background:transparent!important;box-shadow:none!important}
+body.mee-page-kpi #content>.stats>.stat:last-child{border-right:0!important;background:#e5eee8!important}
+body.mee-page-kpi #content>.stats>.stat:after{display:none!important}
 .sales-kpi-card{background:#fffefb!important;border-top:3px solid #426c5d!important;padding:21px!important;box-shadow:none!important}
 .sales-kpi-card .notice{background:#eef2ea!important;border-radius:5px!important}
 .kpi-track{height:7px!important;background:#e8eee7!important;box-shadow:none!important}
 .kpi-fill{background:#4c8266!important;box-shadow:none!important}
 .kpi-fill.gold{background:#b38a4e!important}
 .payout-box{background:#edf2e9!important;border:1px solid #d6e1d2!important;border-radius:6px!important}
-body.mee-page-flowers .order-grid .order{border-left:3px solid #65906c!important}
+body.mee-page-flowers .order-grid .order{border-left:3px solid #65906c!important;min-height:118px!important}
+body.mee-page-flowers .order-grid .order .order-top b{font-family:var(--mee-display)!important;font-size:20px!important;font-weight:600!important;color:#173c33!important}
+body.mee-page-admin #content>.section-head{padding-bottom:15px!important;border-bottom:1px solid #d9ded6!important}
+body.mee-page-admin .table-wrap{border-radius:7px!important}
 
 /* Order creation reads as a sequence of decisions, on both screen sizes. */
 #orderForm.mee-order-form{background:#fffefb!important;border:1px solid #d9ded6!important;border-radius:12px!important;box-shadow:0 24px 70px rgba(16,46,38,.17)!important}
@@ -1130,6 +1152,20 @@ body.mee-page-flowers .order-grid .order{border-left:3px solid #65906c!important
 #orderForm .mee-form-section:first-child{border-top:0!important}
 #orderForm .mee-form-section h4,#orderForm .mee-form-section .mee-section-title{color:#245549!important}
 #orderForm .mee-card-qty-v365{background:#f8f6ee!important;border:1px solid #e4dfcc!important;border-radius:6px!important}
+
+/* Arrival screens follow the same identity as the workspace. */
+.login:not(.hidden){background:#153e37!important}
+.login:before,.login:after{display:none!important}
+.login-card{background:#fffefb!important;border:1px solid #d9ded6!important;border-radius:12px!important;box-shadow:0 30px 90px rgba(4,25,17,.2)!important;padding:36px!important}
+.login-card:before{background:#e5eee8!important;border-radius:4px!important;color:#315449!important;letter-spacing:.12em!important}
+.login-card h2{font-family:var(--mee-display)!important;font-weight:600!important;color:#173c33!important}
+.login-card .btn.primary{background:#153e37!important;box-shadow:none!important;border-radius:6px!important}
+#bootSplash.boot-splash:not(.hidden){background:#153e37!important}
+#bootSplash .mee-splash-card{background:#fffefb!important;border-radius:12px!important;box-shadow:0 30px 90px rgba(4,25,17,.2)!important}
+#bootSplash .mee-splash-flower,#bootSplash .mee-splash-pet{display:none!important}
+#bootSplash .mee-splash-badge{background:#e5eee8!important;color:#315449!important;border-radius:4px!important}
+#bootSplash .mee-splash-logo{background:#eaf0e7!important;border-radius:8px!important;box-shadow:none!important}
+#bootSplash .mee-splash-title{font-family:var(--mee-display)!important;font-weight:600!important;color:#173c33!important}
 
 /* Mobile carries the same hierarchy with denser touch-safe controls. */
 @media(max-width:900px){
@@ -1143,6 +1179,12 @@ body.mee-page-flowers .order-grid .order{border-left:3px solid #65906c!important
   .kanban .lane{background:#f8f9f5!important}
   #orderForm.mee-order-form{border-radius:12px 12px 0 0!important}
   #orderForm .mee-form-section{padding:16px 2px!important}
+  body.mee-page-debt #content>.stats{display:grid!important;grid-template-columns:1fr!important}
+  body.mee-page-debt #content>.stats>.stat{border-right:0!important;border-bottom:1px solid #d9ded6!important}
+  body.mee-page-debt #content>.stats>.stat:last-child{border-bottom:0!important}
+  body.mee-page-kpi #content>.stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  body.mee-page-kpi #content>.stats>.stat{border-bottom:1px solid #d9ded6!important}
+  body.mee-page-kpi #content>.stats>.stat:last-child{grid-column:1/-1!important;border-bottom:0!important}
 }
 @media(max-width:620px){
   .mee-dashboard-summary{grid-template-columns:repeat(2,minmax(0,1fr))!important}
