@@ -19,6 +19,7 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: node scripts/check-staging-pr28.mjs
+      - run: node scripts/check-staging-pr28-interactions.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
