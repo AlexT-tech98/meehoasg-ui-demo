@@ -8,7 +8,9 @@ try {
   const page=await browser.newPage({viewport:{width,height:850},deviceScaleFactor:1});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base+'?qa-mobile='+Date.now(),{waitUntil:'domcontentloaded',timeout:30000});
-  await page.waitForFunction(()=>window.MEEOPS7 && window.S?.user,{timeout:25000});
+  await page.waitForTimeout(3000);
+  console.log('boot-diagnostic',await page.evaluate(()=>({url:location.href,ready:window.__MEE_MAIN_READY__,state:window.__MEE_BOOT_STAGE__,user:window.S?.user?.role,htmlTitle:document.title,api:!!window.__MEE_DEMO_API__,scripts:[...document.scripts].filter(x=>x.src).map(x=>x.src),errors:[...document.querySelectorAll('#loginError')].map(x=>x.textContent)})));
+  await page.waitForFunction(()=>window.MEEOPS7 && window.S?.user,{timeout:12000});
   await page.waitForTimeout(600);
   const dashboardSearch=await page.evaluate(()=>{const el=document.querySelector('.topbar-search');const cs=el&&getComputedStyle(el);return {visible:!!el&&!!el.getClientRects().length&&cs.display!=='none',viewport:innerWidth,right:el?.getBoundingClientRect().right||0};});
   assert.ok(dashboardSearch.visible,'dashboard must show global search');
