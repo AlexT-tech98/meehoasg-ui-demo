@@ -5,8 +5,7 @@ on:
     paths:
       - 'parity-pr30/**'
       - 'scripts/check-parity-pr30.mjs'
-      - 'scripts/check-parity-pr30.mjs'
-      - '.github/workflows/staging-pr28.yml'
+      - '.github/workflows/parity-pr30.yml'
 jobs:
   smoke:
     runs-on: ubuntu-latest
